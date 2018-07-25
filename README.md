@@ -5,3 +5,7 @@
 - Each year the cost of the insurance should decrease by 3%.
 - Basic and Complete coverage will have different prices.
 - Must be developed with Prototypes and then migrate to Classes.
+
+## JS Concepts Used:
+
+## Screenshots:
