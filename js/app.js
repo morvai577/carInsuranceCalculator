@@ -30,7 +30,7 @@ function eventListeners() {
             const price = insurance.calculateQuotation(insurance);
 
             // Print the result from HTMLUI();
-            html.showResults(price);
+            html.showResults(price, insurance);
         }
     });
 }
@@ -147,4 +147,42 @@ HTMLUI.prototype.displayError = function(message) {
         document.querySelector('.error').remove();
     }, 3000);
 }
+
+// Print the result into the HTML
+HTMLUI.prototype.showResults = function(price, insurance) {
+    // Print the result
+    const result = document.getElementById('result');
+
+    // Create a div with the result
+    const div = document.createElement('div');
+
+    // Get Make from the object and assigna readable name
+    let make = insurance.make;
+
+    switch(make) {
+        case '1':
+            make = 'American';
+            break;
+        case '2':
+            make = 'Asian';
+            break;
+        case '3':
+            make = 'European';
+            break;
+    }
+
+
+    // Insert the result
+    div.innerHTML = `
+        <p class="header">Summary</p>
+        <p>Make: ${make}</p>
+        <p>Year: ${insurance.year}</p>
+        <p>Level: ${insurance.level}</p>
+        <p class="total">Total: $ ${price}</p>
+    `;
+
+    // Insert this to into the HTML
+    result.appendChild(div);
+}
+
 
