@@ -25,6 +25,11 @@ function eventListeners() {
         if (make === '' || year === '' || level === '') {
             html.displayError('All the fields are mandatory!');
         } else {
+            // Clear tje previous quotes
+            const prevResult = document.querySelector('#result div');
+            if(prevResult != null) {
+                prevResult.remove();
+            }
             // Make the quotation
             const insurance = new Insurance(make, year, level);
             const price = insurance.calculateQuotation(insurance);
